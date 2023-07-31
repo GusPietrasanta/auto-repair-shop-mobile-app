@@ -1,14 +1,58 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:App"
              x:Class="App.MainPage">
 
     <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+           <StackLayout Margin="20">
+                  <Label Text="Auto Repair Shop" FontSize="Title" HorizontalOptions="Center"
+                         VerticalOptions="CenterAndExpand"></Label>
+                  <Label Text="Login" FontSize="Title" HorizontalOptions="Center"
+                         VerticalOptions="CenterAndExpand"></Label>
+           </StackLayout>
+        
+        <StackLayout Margin="20">
+               <Label Text="Username:"
+                      HorizontalOptions="Center"
+                      VerticalOptions="CenterAndExpand" />
+               <Entry x:Name="UsernameEntry"></Entry>
+        </StackLayout>
+        
+           <StackLayout Margin="20">
+                  <Label Text="Password:"
+                         HorizontalOptions="Center"
+                         VerticalOptions="CenterAndExpand" />
+                  
+                  <Entry x:Name="PasswordEntry" IsPassword="True"></Entry>
+                  </StackLayout>
+           <Button Margin="20" Text="Log In" Clicked="LogInButton_OnClicked"></Button>
+           
+           
+           <StackLayout>
+                  <Label Text="Username:"
+                         HorizontalOptions="Center"
+                         VerticalOptions="CenterAndExpand" />
+                  <Label Text=""  x:Name="UsernameTest" 
+                         HorizontalOptions="Center"
+                         VerticalOptions="CenterAndExpand" />
+                  
+                  <Label Text="Password:"
+                         HorizontalOptions="Center"
+                         VerticalOptions="CenterAndExpand" />
+                  <Label Text=""  x:Name="PasswordTest"
+                         HorizontalOptions="Center"
+                         VerticalOptions="CenterAndExpand" />          
+                  
+                  <Label Text="Response:"
+                         HorizontalOptions="Center"
+                         VerticalOptions="CenterAndExpand" />
+                  <Label Text=""  x:Name="Response"
+                         HorizontalOptions="Center"
+                         VerticalOptions="CenterAndExpand" />
+           </StackLayout>
+           
     </StackLayout>
+       
+       
 
 </ContentPage>
