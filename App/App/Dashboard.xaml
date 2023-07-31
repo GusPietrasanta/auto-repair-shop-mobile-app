@@ -5,7 +5,7 @@
              x:Class="App.Dashboard">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Hello, world!"
+            <Label Text="Hello, world!" x:Name="ShowToken"
                    VerticalOptions="CenterAndExpand"
                    HorizontalOptions="CenterAndExpand" />
         </StackLayout>

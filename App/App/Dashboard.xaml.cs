@@ -15,5 +15,6 @@ public partial class Dashboard : ContentPage
     public Dashboard()
     {
         InitializeComponent();
+        ShowToken.Text = (string)Application.Current.Properties["token"];
     }
 }

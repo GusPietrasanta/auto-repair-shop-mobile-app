@@ -39,6 +39,7 @@ public partial class MainPage
             {
                 //Response.Text = response.Content.ReadAsStringAsync().Result;
                 Application.Current.Properties["token"] = response.Content.ReadAsStringAsync().Result;
+                await Navigation.PushAsync(new Dashboard());
             }
             else
             {
