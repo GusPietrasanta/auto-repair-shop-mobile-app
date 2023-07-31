@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Net.Http;
-using System.Net.Mime;
 using System.Text;
 using System.Text.Json;
 using App.Models;
@@ -11,7 +10,7 @@ namespace App;
 public partial class MainPage
 {
     private readonly HttpClient _client = new();
-    private readonly string _url = "http://192.168.1.100:45500/api/Authentication/token";
+    private readonly string _tokenUrl = "/Authentication/token";
     
         
     public MainPage()
@@ -26,7 +25,7 @@ public partial class MainPage
 
         AuthenticationData userDetails = new AuthenticationData(UsernameEntry.Text, PasswordEntry.Text);
 
-        Uri uri = new Uri(_url);
+        Uri uri = new Uri(Constants.BaseUrl + _tokenUrl);
 
         string json = JsonSerializer.Serialize(userDetails);
         StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
