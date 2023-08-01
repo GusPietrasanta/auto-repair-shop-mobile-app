@@ -16,13 +16,12 @@ public partial class MainPage
     public MainPage()
     {
         InitializeComponent();
+        
+        _client.Timeout = TimeSpan.FromSeconds(10);
     }
 
     private async void LogInButton_OnClicked(object sender, EventArgs e)
     {
-        UsernameTest.Text = UsernameEntry.Text;
-        PasswordTest.Text = PasswordEntry.Text;
-
         AuthenticationData userDetails = new AuthenticationData(UsernameEntry.Text, PasswordEntry.Text);
 
         Uri uri = new Uri(Constants.BaseUrl + _tokenUrl);
@@ -42,12 +41,12 @@ public partial class MainPage
             }
             else
             {
-                Response.Text = "Wrong log in information. Please try again.";                
+                await DisplayAlert ("Error", "Wrong log in information. Please try again.", "OK");               
             }
         }
         catch (Exception ex)
         {
-            Response.Text = ex.Message;
+            await DisplayAlert ("Error", $"There is no connection with the server. {ex.Message}", "OK");
         }
     }
 }

@@ -6,13 +6,42 @@
     <ContentPage.Content>
         <StackLayout>
             
-            <Label Text="" x:Name="UserName"
-                   VerticalOptions="CenterAndExpand"
-                   HorizontalOptions="CenterAndExpand" />
+            <StackLayout Margin="10">
+                <Label Text="" Margin="20" TextColor="Black" FontSize="Title" x:Name="UserName"
+                       VerticalOptions="Center"
+                       HorizontalOptions="CenterAndExpand" />
             
-            <Label Text="" x:Name="JobsCount"
-                   VerticalOptions="CenterAndExpand"
-                   HorizontalOptions="CenterAndExpand" />
+                <Label Text="" Margin="20" FontSize="Subtitle" x:Name="JobsCount"
+                       VerticalOptions="Center"
+                       HorizontalOptions="CenterAndExpand" />
+            
+                <Button Text="Go To Jobs" BackgroundColor="DodgerBlue"></Button>
+            </StackLayout>
+            
+            
+            <StackLayout Margin="10">
+                <Label FontSize="Title" TextColor="Black" Text="Post A Message:"
+                       VerticalOptions="CenterAndExpand"
+                       HorizontalOptions="CenterAndExpand" />
+                
+                <Editor x:Name="Message" HeightRequest="120" Placeholder="Please enter your messsage here..."></Editor>
+            
+                <Picker x:Name="Tag"
+                        Title="Select A Tag"
+                        TitleColor="Black">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Safety</x:String>
+                            <x:String>Schedule</x:String>
+                            <x:String>Inventory</x:String>
+                            <x:String>Equipment</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            
+                <Button Clicked="PostMessage_OnClicked" x:Name="PostMessage" BackgroundColor="DodgerBlue" Text="Send Message"/>
+                
+            </StackLayout>
             
         </StackLayout>
     </ContentPage.Content>
