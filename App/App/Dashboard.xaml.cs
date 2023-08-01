@@ -60,7 +60,6 @@ public partial class Dashboard
     {
         string postMessageUrl = $"{Constants.BaseUrl}/v1/Message";
         
-        
         // Build the object
         MessageModel message = new MessageModel
         {
@@ -78,6 +77,8 @@ public partial class Dashboard
         if (response.IsSuccessStatusCode)
         {
             await DisplayAlert ("Success", "Message has been successfully sent.", "OK");
+            Message.Text = "";
+            Tag.SelectedIndex = -1;
         }
         else
         {
