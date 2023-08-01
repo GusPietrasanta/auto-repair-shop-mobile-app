@@ -2,7 +2,7 @@
 
 namespace App.Models;
 
-public class MessageModel
+public class Message
 {
     public string UserName { get; set; }
     public string Content { get; set; }

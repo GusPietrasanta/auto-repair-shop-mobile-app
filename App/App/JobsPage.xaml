@@ -5,7 +5,6 @@
              xmlns:models="clr-namespace:App.Models;assembly=App"
              x:Class="App.JobsPage">
     <ContentPage.BindingContext>  
-        <!-- <models:EmployeesList />   -->
         <models:AppointmentsList />  
     </ContentPage.BindingContext>  
     <ContentPage.Content>

@@ -61,7 +61,7 @@ public partial class Dashboard
         string postMessageUrl = $"{Constants.BaseUrl}/v1/Message";
         
         // Build the object
-        MessageModel message = new MessageModel
+        Message message = new Message
         {
             Content = Message.Text,
             UserName = Application.Current.Properties["userName"].ToString(),
