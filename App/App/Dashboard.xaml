@@ -15,7 +15,7 @@
                        VerticalOptions="Center"
                        HorizontalOptions="CenterAndExpand" />
             
-                <Button Text="Go To Jobs" BackgroundColor="DodgerBlue"></Button>
+                <Button x:Name="GoToJobs" Clicked="GoToJobs_OnClicked" Text="Go To Jobs" BackgroundColor="DodgerBlue"></Button>
             </StackLayout>
             
             
@@ -24,7 +24,7 @@
                        VerticalOptions="CenterAndExpand"
                        HorizontalOptions="CenterAndExpand" />
                 
-                <Editor x:Name="Message" HeightRequest="120" Placeholder="Please enter your messsage here..."></Editor>
+                <Editor x:Name="Message" HeightRequest="120" Placeholder="Please enter your message here..."></Editor>
             
                 <Picker x:Name="Tag"
                         Title="Select A Tag"

@@ -84,4 +84,9 @@ public partial class Dashboard
             await DisplayAlert ("Error", "There was an error sending your message, please try again.", "OK");
         }
     }
+
+    private async void GoToJobs_OnClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new JobsPage());
+    }
 }

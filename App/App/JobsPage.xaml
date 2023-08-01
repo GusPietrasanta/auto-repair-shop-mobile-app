@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:App.Models;assembly=App"
+             x:Class="App.JobsPage">
+    <ContentPage.BindingContext>  
+        <!-- <models:EmployeesList />   -->
+        <models:AppointmentsList />  
+    </ContentPage.BindingContext>  
+    <ContentPage.Content>
+        <StackLayout Margin="20">
+            
+            <Label Text="Jobs Assigned"
+                   FontSize="Title"
+                   TextColor="Black"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand"/>
+            
+            <ListView HasUnevenRows="True" x:Name="JobsView"
+                      ItemsSource="{Binding Appointments}">
+                <ListView.ItemTemplate>
+                    
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Margin="10">
+                                <Label>
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span FontAttributes="Bold" Text="Vehicle: "></Span>
+                                            <Span Text="{Binding NumberPlate}"></Span>
+                                            <Span Text=" - "></Span>
+                                            <Span Text="{Binding Make}"></Span>
+                                            <Span Text=" "></Span>
+                                            <Span Text="{Binding Model}"></Span>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                
+                                
+                                <Label>
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Date: " FontAttributes="Bold"></Span>
+                                            <Span Text="{Binding Date, StringFormat='{0:dd/MM/yyyy}'}"></Span>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                
+                                <Label>
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span FontAttributes="Bold" Text="Customer: "></Span>
+                                            <Span Text="{Binding FirstName}"></Span>
+                                            <Span Text=" "></Span>
+                                            <Span Text="{Binding LastName}"></Span>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>   
+                                
+                                <Label>
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span FontAttributes="Bold" Text="Appointment ID: "></Span>
+                                            <Span Text="{Binding Id}"></Span>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                
+                                <Button Text="Start Job" BackgroundColor="ForestGreen" x:Name="StartJob" Clicked="StartJob_OnClicked" CommandParameter="{Binding Id}"></Button>
+                                
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                    
+                </ListView.ItemTemplate>
+            </ListView>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
