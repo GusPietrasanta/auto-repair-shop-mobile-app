@@ -3,10 +3,87 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="App.ReportPage">
+    <ContentPage.Resources>
+        
+        <Style x:Key="OkButton" TargetType="RadioButton">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    
+                    <VisualStateGroup x:Name="CheckedStates">
+                        <VisualState x:Name="Checked">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="Green" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        
+                        <VisualState x:Name="Unchecked">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="White" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+        
+        <Style x:Key="AverageButton" TargetType="RadioButton">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    
+                    <VisualStateGroup x:Name="CheckedStates">
+                        <VisualState x:Name="Checked">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="Yellow" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        
+                        <VisualState x:Name="Unchecked">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="White" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>       
+        
+        <Style x:Key="BadButton" TargetType="RadioButton">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    
+                    <VisualStateGroup x:Name="CheckedStates">
+                        <VisualState x:Name="Checked">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="Red" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        
+                        <VisualState x:Name="Unchecked">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="White" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+
+    </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView>
+            
             <StackLayout Margin="20">
                 <Label FontSize="Title" HorizontalOptions="Center" TextColor="Black" Text="Report Form"/>
+                <BoxView Color="DimGray" HeightRequest="1" />
                 <Label FontSize="Subtitle" HorizontalOptions="Center" TextColor="Black" Text="Car Details"/>
                 
                 <Label>
@@ -94,7 +171,7 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <Span FontAttributes="Bold" Text="VIN: "></Span>
-                            <Span x:Name="VIN"></Span>
+                            <Span x:Name="Vin"></Span>
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
@@ -107,6 +184,333 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
+                
+                <BoxView Margin="10" Color="DimGray" HeightRequest="1" />
+                
+                <Label Text="Odometer:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                    <Entry x:Name="Odometer" Keyboard="Numeric" WidthRequest="200"></Entry>
+                    <Label Text="kms" FontSize="Subtitle" VerticalOptions="Center" HorizontalOptions="End"></Label>
+                </StackLayout>
+                
+                <Label Text="Road Test Comments:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <Entry Keyboard="Text" x:Name="RoadTestComments"></Entry>
+                
+                <Label Text="General Comments:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <Entry Keyboard="Text" x:Name="GeneralComments"></Entry>
+                
+                <Label Text="Stored Fault Codes:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <Entry Keyboard="Text" x:Name="StoredFaultCodes"></Entry>
+                
+                <Label Text="Air Conditioning:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <StackLayout RadioButtonGroup.GroupName="AirConditioning" HorizontalOptions="Center" Orientation="Horizontal"> 
+                    <RadioButton x:Name="AcOk" Style="{StaticResource OkButton}" Content="Ok" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Green" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="AcAverage" Style="{StaticResource AverageButton}" Content="Average" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Yellow" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="AcBad" Style="{StaticResource BadButton}" Content="Bad" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Red" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                </StackLayout>                
+                
+                <Label Text="Lights:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <StackLayout RadioButtonGroup.GroupName="Lights" HorizontalOptions="Center" Orientation="Horizontal"> 
+                    <RadioButton x:Name="LightsOk" Style="{StaticResource OkButton}" Content="Ok" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Green" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="LightsAverage" Style="{StaticResource AverageButton}" Content="Average" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Yellow" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton  x:Name="LightsBad" Style="{StaticResource BadButton}" Content="Bad" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Red" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                </StackLayout>
+                
+                <Label Text="Lights Comments:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <Entry Keyboard="Text" x:Name="LightsComments"></Entry>
+                
+                <Label Text="Front Wipers:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <StackLayout RadioButtonGroup.GroupName="FrontWipers" HorizontalOptions="Center" Orientation="Horizontal"> 
+                    <RadioButton x:Name="FrontWipersOk" Style="{StaticResource OkButton}" Content="Ok" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Green" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="FrontWipersAverage" Style="{StaticResource AverageButton}" Content="Average" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Yellow" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton  x:Name="FrontWipersBad" Style="{StaticResource BadButton}" Content="Bad" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Red" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                </StackLayout>
+                
+                <Label Text="Rear Wiper:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <StackLayout RadioButtonGroup.GroupName="RearWiper"  HorizontalOptions="Center" Orientation="Horizontal"> 
+                    <RadioButton x:Name="RearWiperOk" Style="{StaticResource OkButton}" Content="Ok" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Green" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="RearWiperAverage" Style="{StaticResource AverageButton}" Content="Average" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Yellow" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton  x:Name="RearWiperBad" Style="{StaticResource BadButton}" Content="Bad" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Red" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                </StackLayout>
+                
+                <Label Text="Battery:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <StackLayout RadioButtonGroup.GroupName="Battery"  HorizontalOptions="Center" Orientation="Horizontal"> 
+                    <RadioButton x:Name="BatteryOk" Style="{StaticResource OkButton}" Content="Ok" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Green" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="BatteryAverage" Style="{StaticResource AverageButton}" Content="Average" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Yellow" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton  x:Name="BatteryBad" Style="{StaticResource BadButton}" Content="Bad" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Red" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                </StackLayout>
+                
+                <Label Text="Battery Comments:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <Entry Keyboard="Text" x:Name="BatteryComments"></Entry>
+                
+                <Label Text="Air Filter:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <StackLayout RadioButtonGroup.GroupName="AirFilter" HorizontalOptions="Center" Orientation="Horizontal"> 
+                    <RadioButton x:Name="AirFilterOk" Style="{StaticResource OkButton}" Content="Ok" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Green" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="AirFilterAverage" Style="{StaticResource AverageButton}" Content="Average" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Yellow" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton  x:Name="AirFilterBad" Style="{StaticResource BadButton}" Content="Bad" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Red" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                </StackLayout>
+                
+                <Label Text="Cabin Filter:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <StackLayout RadioButtonGroup.GroupName="CabinFilter" HorizontalOptions="Center" Orientation="Horizontal"> 
+                    <RadioButton x:Name="CabinFilterOk" Style="{StaticResource OkButton}" Content="Ok" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Green" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="CabinFilterAverage" Style="{StaticResource AverageButton}" Content="Average" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Yellow" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton  x:Name="CabinFilterBad" Style="{StaticResource BadButton}" Content="Bad" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Red" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                </StackLayout>
+                
+                <Label Text="Drive Belts:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <StackLayout RadioButtonGroup.GroupName="DriveBelts" HorizontalOptions="Center" Orientation="Horizontal"> 
+                    <RadioButton x:Name="DriveBeltsOk" Style="{StaticResource OkButton}" Content="Ok" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Green" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="DriveBeltsAverage" Style="{StaticResource AverageButton}" Content="Average" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Yellow" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton  x:Name="DriveBeltsBad" Style="{StaticResource BadButton}" Content="Bad" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Red" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                </StackLayout>
+
+                <Label Text="Timing Belt:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <StackLayout RadioButtonGroup.GroupName="TimingBelt" HorizontalOptions="Center" Orientation="Horizontal"> 
+                    <RadioButton x:Name="TimingBeltOk" Style="{StaticResource OkButton}" Content="Ok" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Green" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="TimingBeltAverage" Style="{StaticResource AverageButton}" Content="Average" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Yellow" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton  x:Name="TimingBeltBad" Style="{StaticResource BadButton}" Content="Bad" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Red" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                </StackLayout>
+
+                <Label Text="Radiator:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <StackLayout RadioButtonGroup.GroupName="Radiator" HorizontalOptions="Center" Orientation="Horizontal"> 
+                    <RadioButton x:Name="RadiatorOk" Style="{StaticResource OkButton}" Content="Ok" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Green" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="RadiatorAverage" Style="{StaticResource AverageButton}" Content="Average" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Yellow" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton  x:Name="RadiatorBad" Style="{StaticResource BadButton}" Content="Bad" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Red" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                </StackLayout>
+
+                <!-- Hoses -->
+                <Label Text="Hoses:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <StackLayout RadioButtonGroup.GroupName="Hoses" HorizontalOptions="Center" Orientation="Horizontal">
+                    <RadioButton x:Name="HosesOk" Style="{StaticResource OkButton}" Content="Ok" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Green" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="HosesAverage" Style="{StaticResource AverageButton}" Content="Average" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Yellow" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="HosesBad" Style="{StaticResource BadButton}" Content="Bad" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Red" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                </StackLayout>
+                <Label Text="Hoses Comments:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <Entry Keyboard="Text" x:Name="HosesComments"></Entry>
+
+                <!-- Engine Oil -->
+                <Label Text="Engine Oil:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <StackLayout RadioButtonGroup.GroupName="EngineOil" HorizontalOptions="Center" Orientation="Horizontal">
+                    <RadioButton x:Name="EngineOilOk" Style="{StaticResource OkButton}" Content="Ok" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Green" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="EngineOilAverage" Style="{StaticResource AverageButton}" Content="Average" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Yellow" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="EngineOilBad" Style="{StaticResource BadButton}" Content="Bad" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Red" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                </StackLayout>
+
+                <!-- Coolant -->
+                <Label Text="Coolant:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <StackLayout RadioButtonGroup.GroupName="Coolant" HorizontalOptions="Center" Orientation="Horizontal">
+                    <RadioButton x:Name="CoolantOk" Style="{StaticResource OkButton}" Content="Ok" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Green" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="CoolantAverage" Style="{StaticResource AverageButton}" Content="Average" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Yellow" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="CoolantBad" Style="{StaticResource BadButton}" Content="Bad" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Red" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                </StackLayout>
+
+                <!-- Brake Fluid -->
+                <Label Text="Brake Fluid:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <StackLayout RadioButtonGroup.GroupName="BrakeFluid" HorizontalOptions="Center" Orientation="Horizontal">
+                    <RadioButton x:Name="BrakeFluidOk" Style="{StaticResource OkButton}" Content="Ok" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Green" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="BrakeFluidAverage" Style="{StaticResource AverageButton}" Content="Average" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Yellow" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="BrakeFluidBad" Style="{StaticResource BadButton}" Content="Bad" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Red" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                </StackLayout>
+
+                <!-- Power Steering Fluid -->
+                <Label Text="Power Steering Fluid:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <StackLayout RadioButtonGroup.GroupName="PowerSteeringFluid" HorizontalOptions="Center" Orientation="Horizontal">
+                    <RadioButton x:Name="PowerSteeringFluidOk" Style="{StaticResource OkButton}" Content="Ok" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Green" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="PowerSteeringFluidAverage" Style="{StaticResource AverageButton}" Content="Average" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Yellow" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="PowerSteeringFluidBad" Style="{StaticResource BadButton}" Content="Bad" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Red" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                </StackLayout>
+
+                <!-- Transmission Fluid -->
+                <Label Text="Transmission Fluid:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <StackLayout RadioButtonGroup.GroupName="TransmissionFluid" HorizontalOptions="Center" Orientation="Horizontal">
+                    <RadioButton x:Name="TransmissionFluidOk" Style="{StaticResource OkButton}" Content="Ok" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Green" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="TransmissionFluidAverage" Style="{StaticResource AverageButton}" Content="Average" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Yellow" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="TransmissionFluidBad" Style="{StaticResource BadButton}" Content="Bad" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Red" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                </StackLayout>
+
+                <!-- Windscreen Washer Fluid -->
+                <Label Text="Windscreen Washer Fluid:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <StackLayout RadioButtonGroup.GroupName="WindscreenWasherFluid" HorizontalOptions="Center" Orientation="Horizontal">
+                    <RadioButton x:Name="WindscreenWasherFluidOk" Style="{StaticResource OkButton}" Content="Ok" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Green" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="WindscreenWasherFluidAverage" Style="{StaticResource AverageButton}" Content="Average" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Yellow" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="WindscreenWasherFluidBad" Style="{StaticResource BadButton}" Content="Bad" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Red" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                </StackLayout>
+
+                <!-- Fluids Comments -->
+                <Label Text="Fluids Comments:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <Entry Keyboard="Text" x:Name="FluidsComments"></Entry>
+
+                <!-- Spark Plugs -->
+                <Label Text="Spark Plugs:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <StackLayout RadioButtonGroup.GroupName="SparkPlugs" HorizontalOptions="Center" Orientation="Horizontal">
+                    <RadioButton x:Name="SparkPlugsOk" Style="{StaticResource OkButton}" Content="Ok" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Green" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="SparkPlugsAverage" Style="{StaticResource AverageButton}" Content="Average" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Yellow" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="SparkPlugsBad" Style="{StaticResource BadButton}" Content="Bad" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Red" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                </StackLayout>
+
+                <!-- Fuel Filter -->
+                <Label Text="Fuel Filter:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <StackLayout RadioButtonGroup.GroupName="FuelFilter" HorizontalOptions="Center" Orientation="Horizontal">
+                    <RadioButton x:Name="FuelFilterOk" Style="{StaticResource OkButton}" Content="Ok" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Green" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="FuelFilterAverage" Style="{StaticResource AverageButton}" Content="Average" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Yellow" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="FuelFilterBad" Style="{StaticResource BadButton}" Content="Bad" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Red" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                </StackLayout>
+
+                <!-- Front Suspension -->
+                <Label Text="Front Suspension:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <StackLayout RadioButtonGroup.GroupName="FrontSuspension" HorizontalOptions="Center" Orientation="Horizontal">
+                    <RadioButton x:Name="FrontSuspensionOk" Style="{StaticResource OkButton}" Content="Ok" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Green" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="FrontSuspensionAverage" Style="{StaticResource AverageButton}" Content="Average" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Yellow" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="FrontSuspensionBad" Style="{StaticResource BadButton}" Content="Bad" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Red" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                </StackLayout>
+
+                <!-- Front Suspension Comments -->
+                <Label Text="Front Suspension Comments:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <Entry Keyboard="Text" x:Name="FrontSuspensionComments"></Entry>
+
+                <!-- Rear Suspension -->
+                <Label Text="Rear Suspension:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <StackLayout RadioButtonGroup.GroupName="RearSuspension" HorizontalOptions="Center" Orientation="Horizontal">
+                    <RadioButton x:Name="RearSuspensionOk" Style="{StaticResource OkButton}" Content="Ok" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Green" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="RearSuspensionAverage" Style="{StaticResource AverageButton}" Content="Average" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Yellow" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="RearSuspensionBad" Style="{StaticResource BadButton}" Content="Bad" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Red" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                </StackLayout>
+
+                <!-- Rear Suspension Comments -->
+                <Label Text="Rear Suspension Comments:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <Entry Keyboard="Text" x:Name="RearSuspensionComments"></Entry>
+
+                <!-- Front Brakes -->
+                <Label Text="Front Brakes:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <StackLayout RadioButtonGroup.GroupName="FrontBrakes" HorizontalOptions="Center" Orientation="Horizontal">
+                    <RadioButton x:Name="FrontBrakesOk" Style="{StaticResource OkButton}" Content="Ok" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Green" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="FrontBrakesAverage" Style="{StaticResource AverageButton}" Content="Average" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Yellow" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="FrontBrakesBad" Style="{StaticResource BadButton}" Content="Bad" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Red" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                </StackLayout>
+
+                <!-- Front Brakes Comments -->
+                <Label Text="Front Brakes Comments:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <Entry Keyboard="Text" x:Name="FrontBrakesComments"></Entry>
+
+                <!-- Rear Brakes -->
+                <Label Text="Rear Brakes:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <StackLayout RadioButtonGroup.GroupName="RearBrakes" HorizontalOptions="Center" Orientation="Horizontal">
+                    <RadioButton x:Name="RearBrakesOk" Style="{StaticResource OkButton}" Content="Ok" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Green" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="RearBrakesAverage" Style="{StaticResource AverageButton}" Content="Average" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Yellow" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="RearBrakesBad" Style="{StaticResource BadButton}" Content="Bad" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Red" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                </StackLayout>
+
+                <!-- Rear Brakes Comments -->
+                <Label Text="Rear Brakes Comments:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <Entry Keyboard="Text" x:Name="RearBrakesComments"></Entry>
+
+                <!-- RHF Tyre -->
+                <Label Text="RHF Tyre:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <StackLayout RadioButtonGroup.GroupName="RHFTyre" HorizontalOptions="Center" Orientation="Horizontal">
+                    <RadioButton x:Name="RHFTyreOk" Style="{StaticResource OkButton}" Content="Ok" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Green" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="RHFTyreAverage" Style="{StaticResource AverageButton}" Content="Average" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Yellow" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="RHFTyreBad" Style="{StaticResource BadButton}" Content="Bad" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Red" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                </StackLayout>
+
+                <!-- LHF Tyre -->
+                <Label Text="LHF Tyre:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <StackLayout RadioButtonGroup.GroupName="LHFTyre" HorizontalOptions="Center" Orientation="Horizontal">
+                    <RadioButton x:Name="LHFTyreOk" Style="{StaticResource OkButton}" Content="Ok" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Green" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="LHFTyreAverage" Style="{StaticResource AverageButton}" Content="Average" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Yellow" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="LHFTyreBad" Style="{StaticResource BadButton}" Content="Bad" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Red" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                </StackLayout>
+
+                <!-- RHR Tyre -->
+                <Label Text="RHR Tyre:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <StackLayout RadioButtonGroup.GroupName="RHRTyre" HorizontalOptions="Center" Orientation="Horizontal">
+                    <RadioButton x:Name="RHRTyreOk" Style="{StaticResource OkButton}" Content="Ok" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Green" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="RHRTyreAverage" Style="{StaticResource AverageButton}" Content="Average" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Yellow" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="RHRTyreBad" Style="{StaticResource BadButton}" Content="Bad" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Red" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                </StackLayout>
+
+                <!-- LHR Tyre -->
+                <Label Text="LHR Tyre:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <StackLayout RadioButtonGroup.GroupName="LHRTyre" HorizontalOptions="Center" Orientation="Horizontal">
+                    <RadioButton x:Name="LHRTyreOk" Style="{StaticResource OkButton}" Content="Ok" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Green" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="LHRTyreAverage" Style="{StaticResource AverageButton}" Content="Average" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Yellow" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="LHRTyreBad" Style="{StaticResource BadButton}" Content="Bad" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Red" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                </StackLayout>
+
+                <!-- Tyres Comments -->
+                <Label Text="Tyres Comments:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <Entry Keyboard="Text" x:Name="TyresComments"></Entry>
+
+                <!-- Needs Alignment -->
+                <Frame BorderColor="DodgerBlue" CornerRadius="10">
+                    <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                        <Label VerticalOptions="Center" Text="Needs Alignment:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                        <CheckBox VerticalOptions="Center" HorizontalOptions="Center" x:Name="NeedsAlignment"></CheckBox>
+                    </StackLayout>
+                </Frame>
+
+                <!-- Exhaust -->
+                <Label Text="Exhaust:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <StackLayout RadioButtonGroup.GroupName="Exhaust" HorizontalOptions="Center" Orientation="Horizontal">
+                    <RadioButton x:Name="ExhaustOk" Style="{StaticResource OkButton}" Content="Ok" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Green" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="ExhaustAverage" Style="{StaticResource AverageButton}" Content="Average" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Yellow" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="ExhaustBad" Style="{StaticResource BadButton}" Content="Bad" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Red" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                </StackLayout>
+
+                <!-- Exhaust Comments -->
+                <Label Text="Exhaust Comments:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <Entry Keyboard="Text" x:Name="ExhaustComments"></Entry>
+
+                <!-- Drivetrain -->
+                <Label Text="Drivetrain:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <StackLayout RadioButtonGroup.GroupName="Drivetrain" HorizontalOptions="Center" Orientation="Horizontal">
+                    <RadioButton x:Name="DrivetrainOk" Style="{StaticResource OkButton}" Content="Ok" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Green" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="DrivetrainAverage" Style="{StaticResource AverageButton}" Content="Average" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Yellow" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="DrivetrainBad" Style="{StaticResource BadButton}" Content="Bad" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Red" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                </StackLayout>
+                <Label Text="Drivetrain Comments:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <Entry Keyboard="Text" x:Name="DrivetrainComments"></Entry>
+
+                <!-- Oil Leaks -->
+                <Label Text="Oil Leaks:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <StackLayout RadioButtonGroup.GroupName="OilLeaks" HorizontalOptions="Center" Orientation="Horizontal">
+                    <RadioButton x:Name="OilLeaksOk" Style="{StaticResource OkButton}" Content="Ok" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Green" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="OilLeaksAverage" Style="{StaticResource AverageButton}" Content="Average" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Yellow" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="OilLeaksBad" Style="{StaticResource BadButton}" Content="Bad" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Red" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                </StackLayout>
+
+                <!-- Oil Leaks Comments -->
+                <Label Text="Oil Leaks Comments:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <Entry Keyboard="Text" x:Name="OilLeaksComments"></Entry>
+
+                <!-- Coolant Leaks -->
+                <Label Text="Coolant Leaks:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <StackLayout RadioButtonGroup.GroupName="CoolantLeaks" HorizontalOptions="Center" Orientation="Horizontal">
+                    <RadioButton x:Name="CoolantLeaksOk" Style="{StaticResource OkButton}" Content="Ok" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Green" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="CoolantLeaksAverage" Style="{StaticResource AverageButton}" Content="Average" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Yellow" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                    <RadioButton x:Name="CoolantLeaksBad" Style="{StaticResource BadButton}" Content="Bad" WidthRequest="95" BackgroundColor="White" TextColor="Black" BorderColor="Red" FontSize="Small" Padding="3" BorderWidth="2" CornerRadius="10"/>
+                </StackLayout>
+
+                <!-- Coolant Leaks Comments -->
+                <Label Text="Coolant Leaks Comments:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <Entry Keyboard="Text" x:Name="CoolantLeaksComments"></Entry>
+
+                <!-- Other Leaks Comments -->
+                <Label Text="Other Leaks Comments:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <Entry Keyboard="Text" x:Name="OtherLeaksComments"></Entry>
+
+                <!-- Other Comments -->
+                <Label Text="Other Comments:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <Entry Keyboard="Text" x:Name="OtherComments"></Entry>
+
+                <!-- Other Inspection Comments -->
+                <Label Text="Other Inspection Comments:" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"></Label>
+                <Entry Keyboard="Text" x:Name="OtherInspectionComments"></Entry>
+
+                
+                
+                
+                
+                <Button x:Name="SaveReport" Clicked="SaveReport_OnClicked" Text="Save Report"></Button>
                 
             </StackLayout>
         </ScrollView>

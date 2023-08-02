@@ -24,7 +24,7 @@ public partial class MainPage
     {
         AuthenticationData userDetails = new AuthenticationData(UsernameEntry.Text, PasswordEntry.Text);
 
-        Uri uri = new Uri(Constants.BaseUrl + _tokenUrl);
+        Uri uri = new Uri(Session.BaseUrl + _tokenUrl);
 
         string json = JsonSerializer.Serialize(userDetails);
         StringContent content = new StringContent(json, Encoding.UTF8, "application/json");

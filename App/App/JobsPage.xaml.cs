@@ -12,24 +12,20 @@ using Xamarin.Forms.Xaml;
 namespace App;
 
 [XamlCompilation(XamlCompilationOptions.Compile)]
-public partial class JobsPage : ContentPage
+public partial class JobsPage
 {
      private readonly HttpClient _client = new();
 
-    ObservableCollection<DetailedAppointment> _jobs = new ObservableCollection<DetailedAppointment>();
-    public ObservableCollection<DetailedAppointment> Jobs { get { return _jobs; }}
-    
+    ObservableCollection<DetailedAppointment> _jobs = new();
+    public ObservableCollection<DetailedAppointment> Jobs => _jobs;
+
     public JobsPage()
     {
         InitializeComponent();
         BindingContext = this;
         
         JobsView.ItemsSource = _jobs;
-
         
-        // _jobs.Add(new DetailedAppointment{ FirstName = "Elto"});
-        // _jobs.Add(new DetailedAppointment{ FirstName = "Tito"});
-        // _jobs.Add(new DetailedAppointment{ FirstName = "Another One"});
 
         var token = (string)Application.Current.Properties["token"];  
         var contentType = new MediaTypeWithQualityHeaderValue("application/json");
@@ -41,7 +37,7 @@ public partial class JobsPage : ContentPage
      {
          _jobs = new ObservableCollection<DetailedAppointment>();
          
-         string getAppointmentsUrl = $"{Constants.BaseUrl}/v1/Appointment/";
+         string getAppointmentsUrl = $"{Session.BaseUrl}/v1/Appointment/";
          using var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, getAppointmentsUrl);
          
          var response = await _client.SendAsync(httpRequestMessage);
@@ -62,7 +58,7 @@ public partial class JobsPage : ContentPage
      {
          var menuItem = sender as Button;
          int selectedItem = (int)menuItem!.CommandParameter;
-         Constants.WorkingOn = _jobs.FirstOrDefault(c => c.Id == selectedItem);
+         Session.CurrentAppointment = _jobs.FirstOrDefault(c => c.Id == selectedItem);
          await Navigation.PushAsync(new ReportPage());
      }
 }

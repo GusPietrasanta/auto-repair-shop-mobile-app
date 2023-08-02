@@ -4,10 +4,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="App.Dashboard">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Margin="10">
             
-            <StackLayout Margin="10">
-                <Label Text="" Margin="20" TextColor="Black" FontSize="Title" x:Name="UserName"
+            <StackLayout Margin="10,0,0,0">
+                <Label Text="" TextColor="Black" FontSize="Title" x:Name="UserName"
                        VerticalOptions="Center"
                        HorizontalOptions="CenterAndExpand" />
             
@@ -19,12 +19,15 @@
             </StackLayout>
             
             
-            <StackLayout Margin="10">
+            <StackLayout Margin="10,0,0,0">
                 <Label FontSize="Title" TextColor="Black" Text="Post A Message:"
                        VerticalOptions="CenterAndExpand"
                        HorizontalOptions="CenterAndExpand" />
                 
-                <Editor x:Name="Message" HeightRequest="120" Placeholder="Please enter your message here..."></Editor>
+                <Frame BorderColor="DimGray" CornerRadius="10">
+                    <Editor x:Name="Message" HeightRequest="120" Placeholder="Please enter your message here..."></Editor>    
+                </Frame>
+                
             
                 <Picker x:Name="Tag"
                         Title="Select A Tag"

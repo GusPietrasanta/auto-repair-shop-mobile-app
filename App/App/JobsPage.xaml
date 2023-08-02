@@ -66,7 +66,7 @@
                                     </Label.FormattedText>
                                 </Label>
                                 
-                                <Button Text="Start Job" BackgroundColor="ForestGreen" x:Name="StartJob" Clicked="StartJob_OnClicked" CommandParameter="{Binding Id}"></Button>
+                                <Button Text="Start Job" BackgroundColor="#4cbb17" x:Name="StartJob" Clicked="StartJob_OnClicked" CommandParameter="{Binding Id}"></Button>
                                 
                             </StackLayout>
                         </ViewCell>

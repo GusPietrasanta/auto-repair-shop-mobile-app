@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Globalization;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Net.Http;
@@ -40,7 +39,7 @@ public partial class Dashboard
     {
         UserName.Text = $"Welcome, {Application.Current.Properties["userName"]}!";
         
-        string messageCountUrl = $"{Constants.BaseUrl}/v1/Appointment/Count"; 
+        string messageCountUrl = $"{Session.BaseUrl}/v1/Appointment/Count"; 
         using var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, messageCountUrl);
 
         var response = await _client.SendAsync(httpRequestMessage);
@@ -58,7 +57,7 @@ public partial class Dashboard
 
     private async void PostMessage_OnClicked(object sender, EventArgs e)
     {
-        string postMessageUrl = $"{Constants.BaseUrl}/v1/Message";
+        string postMessageUrl = $"{Session.BaseUrl}/v1/Message";
         
         // Build the object
         Message message = new Message
