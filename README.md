@@ -28,19 +28,24 @@ The "ReportPage" allows mechanics to create detailed reports for each job. The p
 ## Screenshots
 
 Wrong log in details will return a 401 Unauthorized from the API, and the app will let the user know that the login details were incorrect.
+
 ![](https://lh3.googleusercontent.com/pw/AIL4fc-23ZQiJEMy9GzQI2zM4hmCzpIitoS16gsK1C70h5eiRSX_vTIyjbeDLO1dgskGoXKukyI6j6Ff8Vzy0f0lFYKwlhsYwrY-lwEZU3KlwK4CEN9bwoyt310vGtmBczjTMWDlpHLTexxaE3CFrX04yM9O=w441-h931-s-no)
 
 Welcome screen for different users.
+
 ![](https://lh3.googleusercontent.com/pw/AIL4fc8RDNYqcv_I4LpNnS8Y8zDDsI_yqnwAdybpzBm2MRT4kP9tVMlcz-CBC6TWOwiwkTkDxxqbP0qh0MLZqMY13t_HLqJtJIgdNN7dtuTJLVgDG00ym5Hsn4l-iqV9OSPKfoqDvbX6AaiiP4vxscRBeyCA=w1920-h403-s-no)
 
 Jobs Page, where the mechanics can see details about every appointment for the day.
+
 ![](https://lh3.googleusercontent.com/pw/AIL4fc_iCEHERXdfAFt9Lif04R8TW5JPjnMZviXq-S8tBplX2EVBZfSmZ0YMOai6onSigGNP6fXmOz3wcu9JDSPyH552mf6m1mLpUb2NZFIbfOT7YfaNcx1FplgEscoStzcRLsmUHbGqggR2WkH-Phg71nTV=w433-h854-s-no)
 
-Sending a message through the app (on the right the manager's dashboard show the new message popping up)
+Sending a message through the app (on the right the manager's dashboard show the new message popping up).
+
 ![](https://lh3.googleusercontent.com/pw/AIL4fc8GnmynhmjtMmym1zyGyzKDtHoLZ56xDgclwQBsOYQwHHe18w6zbdMlVzZFpKM3GNStPymEu12bflvZXEfHENJPPexZM1RhC0Bq3--VzUKfjSpixx-3WhP5Y-cpFFoIn7PrebwDL5IOUF9duf1qm_F2=w1423-h874-s-no)
 
 Saving a report sends the information to the server through the API, and will automatically appear as complete on manager's dashboard.
-![](https://lh3.googleusercontent.com/pw/AIL4fc-MAxgBANnkV8X6VdqHD6Osx8FQApFlitJCUTPwcdafatrkljy65TbM29fRUL6HtMJ9BfAjnBeyyAV1ahnDQWuewC0yQjfmupBJ4piQFg83D-uQfR8uQypPV9Ek6-_YQL5Me8KbHoPGd_Y2z-zMA-Bs=w1400-h931-s-no)
+
+![](https://lh3.googleusercontent.com/pw/AIL4fc-MAxgBANnkV8X6VdqHD6Osx8FQApFlitJCUTPwcdafatrkljy65TbM29fRUL6HtMJ9BfAjnBeyyAV1ahnDQWuewC0yQjfmupBJ4piQFg83D-uQfR8uQypPV9Ek6-_YQL5Me8KbHoPGd_Y2z-zMA-Bs=w700-h465-s-no)
 
 ## Licence
 [MIT Licence] (http://opensource.org/licenses/MIT)
