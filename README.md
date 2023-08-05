@@ -1,4 +1,4 @@
-# auto-repair-shop-mobile-app
+# Auto Repair Shop Mobile App
 
 ## Description
 
@@ -46,6 +46,12 @@ Sending a message through the app (on the right the manager's dashboard show the
 Saving a report sends the information to the server through the API, and will automatically appear as complete on manager's dashboard.
 
 ![](https://lh3.googleusercontent.com/pw/AIL4fc-MAxgBANnkV8X6VdqHD6Osx8FQApFlitJCUTPwcdafatrkljy65TbM29fRUL6HtMJ9BfAjnBeyyAV1ahnDQWuewC0yQjfmupBJ4piQFg83D-uQfR8uQypPV9Ek6-_YQL5Me8KbHoPGd_Y2z-zMA-Bs=w700-h465-s-no)
+
+
+## App Working Together with the API deployed to AWS and the Web App to Azure
+
+![](https://lh3.googleusercontent.com/pw/AIL4fc_qDTlL_SmHqop5KzHfSqK3M3PAYdVpI5qzwrj_GaEIEr6A2djIBjL7FzTFNiOFwbCrHbj3Kr08bEr5eE3vIWYWWZtduXhfW1ZSguOtur3rK5KOUiheIhx5DdvYexeiZjvfAag_NJgP9yWe74XI9YnQ=w1824-h912-s-no)
+
 
 ## Licence
 [MIT Licence] (http://opensource.org/licenses/MIT)
